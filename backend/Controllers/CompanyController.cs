@@ -4,6 +4,7 @@ using backend.Core.Dtos.Company;
 using backend.Core.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers
 {
@@ -36,6 +37,16 @@ namespace backend.Controllers
         }
 
         //READ
+        [HttpGet]
+        [Route("Get")]
+
+        public async Task<ActionResult<IEnumerable<CompanyReadDto>>> GetCompanies()
+        {
+            var companies = await _context.Companys.ToListAsync();
+            var Companiesdto = _mapper.Map<IEnumerable< CompanyReadDto>>(companies);
+
+            return Ok(Companiesdto);
+        }
 
         //UPDATE
 
