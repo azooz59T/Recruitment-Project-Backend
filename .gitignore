@@ -363,5 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # user CV pdf files
-
 documents/pdfs/*.pdf
