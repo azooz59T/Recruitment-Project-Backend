@@ -70,6 +70,20 @@ namespace backend.Controllers
             return Ok(candidatedto);
         }
 
+        //Read (Download Pdf File)
+        [HttpGet]
+        [Route("download/{filename}")]
+        public IActionResult DownloadPdfFile(string filename)
+        {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "documents", "pdfs", filename);
+
+            var pdfBytes = System.IO.File.ReadAllBytes(filePath);
+            var file = File(pdfBytes, "application/pdf", filename);
+
+            return file;
+        }
+
+
         //UPDATE
 
         //DELETE
